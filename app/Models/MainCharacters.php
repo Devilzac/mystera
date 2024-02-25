@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class MainCharacters extends Model
 {
     use HasFactory;
+
+    public function getAllMainCharacters(){
+        return MainCharacters::all();
+    }
 }

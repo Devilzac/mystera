@@ -12,7 +12,9 @@ class MainCharactersController extends Controller
      */
     public function index()
     {
-        //
+        $allChars = new MainCharacters;
+        $list = $allChars->getAllMainCharacters();
+        return view('index', compact('list'));
     }
 
     /**
