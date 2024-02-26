@@ -36,9 +36,10 @@ class MainCharactersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MainCharacters $mainCharacters)
+    public function show($id)
     {
-        //
+        $character = MainCharacters::find($id);
+        return view('character.character', compact('character'));
     }
 
     /**

@@ -12,6 +12,6 @@ class MainCharactersSeeder extends Seeder
      */
     public function run(): void
     {       
-        \App\Models\MainCharacters::factory(10)->create();
+        \App\Models\MainCharacters::factory(50)->create();
     }
 }

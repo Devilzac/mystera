@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('main_characters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('tribe');
+            $table->string('description');
             $table->timestamps();
         });
     }

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('alts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('tribe');
+            $table->string('description');
             $table->timestamps();
         });
     }

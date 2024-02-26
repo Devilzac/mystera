@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainCharactersController::class, 'index']);
+Route::get('/character/{id}', [MainCharactersController::class, 'show']);

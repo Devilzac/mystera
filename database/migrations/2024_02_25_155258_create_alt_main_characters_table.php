@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('alt_main_characters', function (Blueprint $table) {
-            $table->unsignedBigInteger('alt_character_id');
-            $table->unsignedBigInteger('main_character_id');
+            $table->unsignedBigInteger('alt_id');
+            $table->unsignedBigInteger('main_characters_id');
 
-            $table->foreign('alt_character_id')->references('id')->on('alts')->onDelete('cascade');
-            $table->foreign('main_character_id')->references('id')->on('main_characters')->onDelete('cascade');
+            $table->foreign('alt_id')->references('id')->on('alts')->onDelete('cascade');
+            $table->foreign('main_characters_id')->references('id')->on('main_characters')->onDelete('cascade');
         });
     }
 
