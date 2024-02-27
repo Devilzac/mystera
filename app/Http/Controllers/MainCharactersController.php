@@ -2,16 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alt;
 use App\Models\MainCharacters;
 use Illuminate\Http\Request;
 
 class MainCharactersController extends Controller
 {
+
+    public function search(Request $request)
+    {
+        $search_param = $request->query('search');
+        $searchType = $request->query('searchType');
+
+        switch ($searchType) {
+            case 'main':
+                $character = MainCharacters::where('name', 'like', "%$search_param%")->first();
+                break;
+            case 'alt':
+                $character = Alt::where('name', 'like', "%$search_param%")->first();
+                return view('character.alt', compact('character'));
+                break;
+            default:
+                $character = MainCharacters::where('name', 'like', "%$search_param%")->first();
+                break;
+        }
+        return view('character.character', compact('character'));
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $allChars = new MainCharacters;
         $list = $allChars->getAllMainCharacters();
         return view('index', compact('list'));

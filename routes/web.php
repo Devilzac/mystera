@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AltController;
 use App\Http\Controllers\MainCharactersController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainCharactersController::class, 'index']);
-Route::get('/character/{id}', [MainCharactersController::class, 'show']);
+Route::get('/main/{id}', [MainCharactersController::class, 'show']);
+Route::get('/alt/{id}', [AltController::class, 'show']);
+
+Route::get('/search', [MainCharactersController::class, 'search'])->name('character.search');
