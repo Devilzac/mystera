@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 class MainCharactersController extends Controller
 {
 
+    public function addMain()
+    {        
+        $character = Alt::all();
+        return view('character.addMain', compact('character'));
+    }
+
+
     public function search(Request $request)
     {
         $search_param = $request->query('search');

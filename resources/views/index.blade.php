@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <style>
         * {
-            font-family: "Marcellus", serif;
-            font-weight: 400;
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
             font-style: normal;
         }     
         .mainChar{
@@ -21,75 +22,265 @@
             color:#fff;
         }   
         body{
-            background: url( {{url('images/bg/bg'.rand(1, 2).'.webp')}} );
+            background: url( {{url('images/bg/bg'.rand(1, 1).'.webp')}} );
             background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
+            max-width: 1200px;
+            margin: auto;
         }
         #container{
             background: rgba(0,0,0, 0.8);
             padding: 30px;
             border-radius: 15px;
-            width: 100%;
+            width: 90%;
+            margin: auto;
         }
         .lupa{
             stroke:#fff !important;
         }
+        header{
+            display: flex;
+            background: black;
+            flex-direction: row;
+        }
+        .form-switch .form-check-input{
+            margin: 10px 0px 5px 5px;
+            background-image: url( {{ url('images/toggle/pixelSword2.webp') }} );
+            background-position: left center;
+            border-radius: 2em;
+            transition: background-position .15s ease-in-out;         
+            background-color: green;
+            border-color: green;
+            width: 100px;
+            height: 20px;
+            
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(0,150,0,.25);
+            
+            animation-name: example;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes example {
+            from {            
+                box-shadow: 0 0 0 0.2rem rgba(0,150,0,.2);
+            }
+            to {              
+                box-shadow: 0 0 0 0.25rem rgba(0,150,0,.6);
+            }
+        }
+        .form-switch .form-check-input::before{
+            content:"Main";
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            top: 0;
+            font-size: 13px;
+        }
+        .form-switch .form-check-input:checked::before{
+            content:"Alt";
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            font-size: 13px;
+        }
+        
+        .form-switch .form-check-input:checked{
+            background-image: url( {{ url('images/toggle/pixelSword.webp') }} );
+            background-position: right center;
+            border-radius: 2em;
+            transition: background-position .15s ease-in-out;     
+        }
+        
+        .form-switch{
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        .cntSearch {
+            display: flex;
+            button{
+                height: fit-content;
+                margin-left: 10px;
+            }
+        }
+        .navbar{
+            background: rgba(0,0,0, 0.7) !important;
+            border-radius: 15px;
+            width: 90%;
+            left: 0;
+            right: 0;
+            margin: 15px auto 15px auto;
+            padding: 0;
+            overflow: hidden;
+        }
+        .navbar .nav-link, .navbar-brand{
+            color: #fff !important;
+        }
+        .btnAlt{
+            display: flex;
+            justify-content: space-between;
+            button{
+                height: fit-content;
+                border-radius: 2em;
+                width: 100px;
+                margin: 10px 0px 5px 5px;
+                padding: 0px;
+                font-size: 13px;
+            }
+        }
+        #navbarSupportedContent{
+            background: rgba(0,0,0, 0.3);
+            padding: 15px;
+        }
+        .container-fluid{
+            padding: 0px 0px 0px 15px;
+        }
+        .list-flex{
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            a{
+                text-decoration:none;
+            }
+            hr{
+                color:#fff;
+            }
+        }
+        .charList{
+            display: flex;
+            img{
+                height: 52px;
+            }
+            .mainCharInfo, .altAmount{
+                color:#fff;
+            }
+        }
+        .mainCharInfo{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: flex-end;
+            margin-left: 15px; 
+        }
+        .addMainAlt{
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            padding: 0;
+            vertical-align: middle;
+            ul{
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        .relation{
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            transition: all 0.5s;
+            &:hover{
+                background: rgba(0,0,0,0.8);
+                transition: all 0.5s;
+                transform: scale(1.2);
+            }
+            img{
+                width: 50px;
+                height: 100%;
+                filter: invert(1);
+            }
+        }
+        .navbar.charArea{
+            overflow: visible;
+                .nav-item{
+                    a{
+                        transition: all 0.5s;
+                    &:hover{
+                        color: #46b363 !important;
+                        transition: all 0.5s;
+                    }
+                }
+            }          
+        }
     </style>
 </head>
-<body style="max-width:720px;margin:auto;">
-    <div id="container">
-        <h1 class="mainChar" >Mystera Legacy Character Tracking</h1>
-        <hr>
-        <br>
-
-        <!-- START SEARCH -->
-        <form action={{ route('character.search') }} class="max-w-md mx-auto" method="GET">   
-            <label for="search" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-white">Search</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-white-500 dark:text-white-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path class="lupa" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
-                </div>
-                <input type="search" id="search" name="search" class="block w-full mb-9 p-4 ps-10 text-sm text-white-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Character Name..." required />
-                <div style="position: absolute;bottom: -30px;display: flex;flex-direction: row;justify-content: space-between;width: 200px;">
-                    <input type="radio" checked name="searchType" value="main" id="searchType">
-                    <label for="searchType" class="mb-1 text-sm font-medium text-white-900 dark:text-white">Main</label>
-                    <input type="radio" name="searchType" value="alt" id="searchType-2">
-                    <label for="searchType-2" class="mb-1 text-sm font-medium text-white-900 dark:text-white">Alt</label>
-                </div>
-                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-            </div>
-        </form>
-        <!-- END SEARCH -->
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Mystera Legacy Tracker</a>
+          <div class="" id="navbarSupportedContent">            
+                <!-- START SEARCH -->
+                <form action={{ route('character.search') }} class="d-flex" role="search" method="GET">
+                    <div class="cntSearch">
+                        <div class="form-switch">
+                            <input type="search" id="search" name="search" class="form-control me-2" placeholder="Character name..." aria-label="Search">                    
+                            <div class="btnAlt">
+                                <input class="form-check-input" type="checkbox" role="switch" id="searchType">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>            
+                <!-- END SEARCH -->
+          </div>
+        </div>
+      </nav>
+      
+    <nav class="navbar charArea navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="addMainAlt" id="navbarSupportedContent">            
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{{  url('/add/main') }}">Add New Main</a>
+                </li>
+                <li class="nav-item relation">
+                  <a class="nav-link" aria-current="page" href="{{  url('/relation') }}"><img src="{{url('images/toggle/social.webp')}}" alt=""></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{  url('/add/alt') }}">Add New Alt</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+    <header>        
+    </header>
+    <div id="container">     
         <!-- START LIST -->
-        <ul class="max-h400 divide-y divide-white1-200 dark:divide-white1-700">
-            @foreach ($list as $character)    
-            <li class="pb-1 sm:pb-1 pt-1 sm:pt-1">
+        <ul class="list-flex">
+            @foreach ($list as $key => $character)    
+            <li class="list-flex">
                 <a href="{{url('/main/'.$character->id)}}">
-                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
-                        <div class="flex-shrink-0">
-                            <img class="w-8 h-8 rounded-full" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$character->name}}">
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-white-900 truncate dark:text-white">
+                    <div class="charList">
+                        <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$character->name}}">
+                        <div class="mainCharInfo">
+                            <span class="">
                             {{$character->name}}
-                            </p>
-                            <p class="text-sm text-white-500 truncate dark:text-white-400 dark:text-white">
+                            </span>
+                            <span class="">
                                 {{$character->tribe}}
-                            </p>
+                            </span>
                         </div>
-                        <div class="inline-flex items-center text-base font-semibold text-white-900 dark:text-white">
+                        <div class="altAmount">
                             Alts: {{ count($character->alt) }} 
                         </div>
                     </div>
                 </a>
             </li>    
+            @if ($key != 0)
+                <hr>                
+            @endif
             @endforeach()    
         </ul>   
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
 </body>
 </html>

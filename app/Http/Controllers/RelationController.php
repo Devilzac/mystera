@@ -6,21 +6,18 @@ use App\Models\Alt;
 use App\Models\MainCharacters;
 use Illuminate\Http\Request;
 
-class AltController extends Controller
+class RelationController extends Controller
 {
 
-    public function addAlt()
-    {   
-        $character = MainCharacters::all();
-        return view('character.addAlt', compact('character'));
-    }
 
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        return view('character.addAlt');
+    {        
+        $character = MainCharacters::all();
+        $alt = Alt::all();
+        return view('character.characterRelation', compact('character','alt'));
     }
 
     /**
