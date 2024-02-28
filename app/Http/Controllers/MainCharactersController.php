@@ -20,20 +20,14 @@ class MainCharactersController extends Controller
     {
         $search_param = $request->query('search');
         $searchType = $request->query('searchType');
-
-        switch ($searchType) {
-            case 'main':
-                $character = MainCharacters::where('name', 'like', "%$search_param%")->first();
-                break;
-            case 'alt':
-                $character = Alt::where('name', 'like', "%$search_param%")->first();
-                return view('character.alt', compact('character'));
-                break;
-            default:
-                $character = MainCharacters::where('name', 'like', "%$search_param%")->first();
-                break;
+        if(is_null($searchType)){
+            $character = MainCharacters::where('name', 'like', "%$search_param%")->first();
+            return view('character.character', compact('character'));
         }
-        return view('character.character', compact('character'));
+        if($searchType == 'on'){
+            $character = Alt::where('name', 'like', "%$search_param%")->first();
+            return view('character.alt', compact('character'));
+        }
     }
     /**
      * Display a listing of the resource.

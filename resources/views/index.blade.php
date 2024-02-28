@@ -221,7 +221,7 @@
                         <div class="form-switch">
                             <input type="search" id="search" name="search" class="form-control me-2" placeholder="Character name..." aria-label="Search">                    
                             <div class="btnAlt">
-                                <input class="form-check-input" type="checkbox" role="switch" id="searchType">
+                                <input class="form-check-input" type="checkbox" name="searchType" role="switch" id="searchType">
                                 <button class="btn btn-outline-success" type="submit">Search</button>
                             </div>
                         </div>
