@@ -9,18 +9,14 @@ use Illuminate\Http\Request;
 class AltController extends Controller
 {
 
-    public function addAlt()
-    {   
-        $character = MainCharacters::all();
-        return view('character.addAlt', compact('character'));
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        return view('character.addAlt');
+        $allChars = new Alt();
+        $list = $allChars->getAllAltCharacters();
+        return view('altList', compact('list'));
     }
 
     /**
@@ -28,7 +24,9 @@ class AltController extends Controller
      */
     public function create()
     {
-        //
+        
+        $character = Alt::all();
+        return view('character.addAlt', compact('character'));
     }
 
     /**
@@ -36,7 +34,10 @@ class AltController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = request()->all();
+        Alt::create($item);
+        
+        return redirect('/alts')->with('message', 'Item saved correctly!!!');
     }
 
     /**

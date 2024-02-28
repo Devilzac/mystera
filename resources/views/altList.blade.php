@@ -4,50 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-<style>
-   .block{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 200px;
-   }
-   body{
-    padding: 15px;
-   }
-   .block input{
-    margin: 5px 0;
-   }
-   .itemReceived{
-    align-self: flex-start;
-   }
+    <style>
         * {
             font-family: "Pixelify Sans", sans-serif;
             font-optical-sizing: auto;
             font-weight: <weight>;
             font-style: normal;
-        }    
+        }     
+        .mainChar{
+            text-align: center;
+            padding:15px;
+            color:#fff;
+        }   
         body{
             background: url( {{url('images/bg/bg'.rand(1, 1).'.webp')}} );
             background-size: cover;
-            height: 100vh;
             max-width: 1200px;
             margin: auto;
         }
         #container{
             background: rgba(0,0,0, 0.8);
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 7px !important;
             width: 90%;
             margin: auto;
-            h1,h2,h3{
-                color:#fff;
-            }
+            max-height: 470px;
+            overflow: auto;   
+
+                            
+                    /*
+                    *  STYLE 1
+                    */
+
+                    &::-webkit-scrollbar-track
+                    {
+                    border-radius: 10px;
+                    background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar
+                    {
+                    width: 12px;
+                    background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar-thumb
+                    {
+                    border-radius: 10px;
+                    background-color: #555;
+                    }
+                    
+               
         }
         .lupa{
             stroke:#fff !important;
@@ -123,7 +135,7 @@
         }
         .navbar{
             background: rgba(0,0,0, 0.7) !important;
-            border-radius: 15px;
+            border-radius: 7px;
             width: 90%;
             left: 0;
             right: 0;
@@ -131,7 +143,7 @@
             padding: 0;
             overflow: hidden;
         }
-        .navbar .nav-link, .navbar-brand, label{
+        .navbar .nav-link, .navbar-brand{
             color: #fff !important;
         }
         .btnAlt{
@@ -179,10 +191,7 @@
             flex-direction: column;
             width: 100%;
             justify-content: flex-end;
-            margin-left: 15px;             
-            &.description{
-                margin-left: 0px;
-            }
+            margin-left: 15px; 
         }
         .addMainAlt{
             display: flex;
@@ -225,24 +234,7 @@
                 }
             }          
         }
-</style>
-<style>
-   .block{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 200px;
-   }
-   body{
-    padding: 15px;
-   }
-   .block input{
-    margin: 5px 0;
-   }
-   .itemReceived{
-    align-self: flex-start;
-   }
-</style>
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -278,17 +270,54 @@
             </ul>
         </div>
     </nav>
-    <form  id="container"   action="{{ url('/adding/main')}}" method="post" class="block">
-        @csrf
-        <label for="name">Name: </label><input type="text" placeholder="Main Character Name" name="name" required id="name">
-        <label for="tribe">Tribe: </label><input type="text" placeholder="Current tribe" name="tribe" required id="tribe">
-        <label for="description">Description: </label><input type="text" placeholder="Small description" name="description" required id="description">
-        <button type="submit">Submit</button>
-    </form>
-    
+      
+    <nav class="navbar charArea navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="addMainAlt" id="navbarSupportedContent">            
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{{  url('/add/main') }}">Add New Main</a>
+                </li>
+                <li class="nav-item relation">
+                  <a class="nav-link" aria-current="page" href="{{  url('/relation') }}"><img src="{{url('images/toggle/social.webp')}}" alt=""></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{  url('/add/alt') }}">Add New Alt</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+    <header>        
+    </header>
+    <div id="container">     
+        <!-- START LIST -->
+        <ul class="list-flex">
+            @foreach ($list as $key => $character)    
+            <li class="list-flex">
+                <a href="{{url('/alt/'.$character->id)}}">
+                    <div class="charList">
+                        <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$character->name}}">
+                        <div class="mainCharInfo">
+                            <span class="">
+                            {{$character->name}}
+                            </span>
+                            <span class="">
+                                {{$character->tribe}}
+                            </span>
+                        </div>
+                        <div class="altAmount">
+                            Main: {{ count($character->main) }} 
+                        </div>
+                    </div>
+                </a>
+            </li>    
+            <hr>     
+            @endforeach()    
+        </ul>   
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
 </body>
-
-
 </html>

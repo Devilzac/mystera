@@ -9,12 +9,6 @@ use Illuminate\Http\Request;
 class MainCharactersController extends Controller
 {
 
-    public function addMain()
-    {        
-        $character = Alt::all();
-        return view('character.addMain', compact('character'));
-    }
-
 
     public function search(Request $request)
     {
@@ -44,16 +38,20 @@ class MainCharactersController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
+    {        
+        $character = Alt::all();
+        return view('character.addMain', compact('character'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {                
+        $result = request()->all();
+        //dd($result);
+        MainCharacters::create($result);
+        return redirect('/')->with('message', 'Item saved correctly!!!');;
     }
 
     /**

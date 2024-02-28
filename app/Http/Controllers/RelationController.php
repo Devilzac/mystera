@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alt;
 use App\Models\MainCharacters;
+use App\Models\Relation;
 use Illuminate\Http\Request;
 
 class RelationController extends Controller
@@ -20,6 +21,14 @@ class RelationController extends Controller
         return view('character.characterRelation', compact('character','alt'));
     }
 
+    public function relationing(Request $request)
+    {               
+        $mainRelationn = new MainCharacters();
+        $main = $request->input('main');
+        $alt = $request->input('alt');
+        $mainRelationn->mainRelation($main, $alt);
+        return redirect('/')->with('message', 'Item saved correctly!!!');;
+    }
     /**
      * Show the form for creating a new resource.
      */

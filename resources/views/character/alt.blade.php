@@ -256,14 +256,10 @@
         </div>
       </nav>
       
-    <header>        
-    </header>
     <div id="container">     
         <h1>Alt</h1>
         <!-- START LIST -->
-        <ul class="list-flex">
-            
-        @foreach ($character->main as $key => $main)
+        <ul class="list-flex">            
             <li class="list-flex">
                     <div class="charList">
                         <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$character->name}}">
@@ -289,8 +285,6 @@
                     </div>
                 </div>
             </li> 
-            
-        @endforeach()    
 
         </ul>
 
@@ -314,9 +308,7 @@
                 </div>
             </a>
         </li>    
-        @if ($key != 0)
-            <hr>                
-        @endif
+            <hr>     
         @endforeach()    
     </ul>   
     </div>

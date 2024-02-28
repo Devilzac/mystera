@@ -18,12 +18,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainCharactersController::class, 'index']);
+Route::get('/alts', [AltController::class, 'index']);
+
 Route::get('/main/{id}', [MainCharactersController::class, 'show']);
 Route::get('/alt/{id}', [AltController::class, 'show']);
 
 Route::get('/search', [MainCharactersController::class, 'search'])->name('character.search');
 
 
-Route::get('/add/alt', [AltController::class, 'addAlt']);
-Route::get('/add/main', [MainCharactersController::class, 'addMain']);
+Route::get('/add/alt', [AltController::class, 'create']);
+Route::get('/add/main', [MainCharactersController::class, 'create']);
+Route::post('/adding/main', [MainCharactersController::class, 'store']);
+Route::post('/adding/alt', [AltController::class, 'store']);
 Route::get('/relation', [RelationController::class, 'index']);
+Route::post('/relationship', [RelationController::class, 'relationing']);
+

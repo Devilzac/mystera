@@ -24,16 +24,42 @@
         body{
             background: url( {{url('images/bg/bg'.rand(1, 1).'.webp')}} );
             background-size: cover;
-            height: 100vh;
             max-width: 1200px;
             margin: auto;
         }
         #container{
             background: rgba(0,0,0, 0.8);
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 7px !important;
             width: 90%;
             margin: auto;
+            max-height: 470px;
+            overflow: auto;   
+
+                            
+                    /*
+                    *  STYLE 1
+                    */
+
+                    &::-webkit-scrollbar-track
+                    {
+                    border-radius: 10px;
+                    background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar
+                    {
+                    width: 12px;
+                    background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar-thumb
+                    {
+                    border-radius: 10px;
+                    background-color: #555;
+                    }
+                    
+               
         }
         .lupa{
             stroke:#fff !important;
@@ -109,7 +135,7 @@
         }
         .navbar{
             background: rgba(0,0,0, 0.7) !important;
-            border-radius: 15px;
+            border-radius: 7px;
             width: 90%;
             left: 0;
             right: 0;
@@ -231,7 +257,18 @@
           </div>
         </div>
       </nav>
-      
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}">Mains List</a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('/alts') }}">Alts List</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     <nav class="navbar charArea navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <div class="addMainAlt" id="navbarSupportedContent">            
@@ -274,9 +311,7 @@
                     </div>
                 </a>
             </li>    
-            @if ($key != 0)
-                <hr>                
-            @endif
+            <hr>      
             @endforeach()    
         </ul>   
     </div>

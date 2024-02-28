@@ -12,6 +12,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
+   * {
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }     
+        .mainChar, .form-check-label{
+            text-align: center;
+            padding:15px;
+            color:#fff;
+        }   
+        body{
+            background: url( {{url('images/bg/bg'.rand(1, 1).'.webp')}} );
+            background-size: cover;
+            max-width: 1200px;
+            margin: auto;
+        }
+        #container{
+            background: rgba(0,0,0, 0.8);
+            padding: 30px;
+            border-radius: 7px !important;
+            width: 90%;
+            height: 90vh;
+            margin: auto;
+            overflow: auto;   
+
+                            
+                    /*
+                    *  STYLE 1
+                    */
+
+                    &::-webkit-scrollbar-track
+                    {
+                    border-radius: 10px;
+                    background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar
+                    {
+                    width: 12px;
+                    background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar-thumb
+                    {
+                    border-radius: 10px;
+                    background-color: #555;
+                    }
+                    
+               
+        }
    .block{
     display: flex;
     justify-content: flex-start;
@@ -27,35 +78,58 @@
    .itemReceived{
     align-self: flex-start;
    }
-
+   .flexiCenter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   }
+   .form-check {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 5px;
+    color: #fff;
+   }
+   h3{
+    color: #fff;
+    left: -15px;
+    position: relative;
+   }
+   hr{
+    color: #fff;
+   }
 </style>
 </head>
 <body>
-    <form action="{{ url('/')}}" method="post" class="block">
-        @csrf        
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Main Caracter
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                
-                @foreach ( $character as $char)
-                    <a class="dropdown-item" href="#">{{$char->name}}</a>
-                @endforeach       
+  <form  id="container"  action="{{ url('/relationship')}}" method="post" class="block">    
+      @csrf      
+        <div class="container">                 
+          <h3>Mains</h3>
+          <div class="row justify-content-between">
+            <div class="form-check form-switch col-12">
+              @foreach ($character as $char)
+                  <div class="flexiCenter">
+                    <input name="main[]" class="form-check-input" type="radio" id="flexSwitch{{$char->name}}" value="{{$char->id}}">
+                    <label name="main[]"  class="form-check-label" for="flexSwitch{{$char->name}}">{{$char->name}}</label>
+                  </div>
+              @endforeach   
             </div>
-        </div>       
-        
-        
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Alt Character
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">      
-                @foreach ( $alt as $altChar)
-                    <a class="dropdown-item" href="#about">{{$altChar->name}}</a>
-                @endforeach   
+          </div>
+        </div>
+      <hr>
+        <div class="container">     
+          <h3>Alts</h3> 
+          <div class="row justify-content-between">          
+            <div class="form-check form-switch col-12">
+              @foreach ( $alt as $altChar)
+                  <div class="flexiCenter">
+                    <input name="alt[]"  class="form-check-input" type="checkbox" id="flexSwitch{{$altChar->name}}" value="{{$altChar->id}}">
+                    <label name="alt[]"  class="form-check-label" for="flexSwitch{{$altChar->name}}">{{$altChar->name}}</label>
+                  </div>
+              @endforeach   
             </div>
-        </div>  
-
+          </div>
+        </div>
+        <hr>
         <button type="submit">Submit</button>
     </form>
     
