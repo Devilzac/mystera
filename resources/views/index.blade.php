@@ -213,7 +213,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Mystera Legacy Tracker</a>
+          <a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a>
           <div class="" id="navbarSupportedContent">            
                 <!-- START SEARCH -->
                 <form action={{ route('character.search') }} class="d-flex" role="search" method="GET">
