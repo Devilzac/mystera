@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class MainCharactersController extends Controller
 {
 
+    public function unlink($id)
+    {        
+        dd($id);
+    }
 
     public function search(Request $request)
     {
