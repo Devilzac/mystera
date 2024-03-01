@@ -49,3 +49,5 @@ Route::get('/relation', [RelationController::class, 'index']);
 Route::post('/relationship', [RelationController::class, 'relationing']);
 
 
+
+Route::post('/unlink/alt/{id}', [AltController::class, 'unlink']);

@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class AltController extends Controller
 {
 
+    
+    public function unlink($id)
+    {        
+        $character = new Alt;
+        $list = $character->unlink($id);
+    }
     /**
      * Display a listing of the resource.
      */

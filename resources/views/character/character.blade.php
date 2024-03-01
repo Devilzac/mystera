@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <style>
         * {
             font-family: "Pixelify Sans", sans-serif;
@@ -147,6 +148,26 @@
             flex-direction: column;
             margin: 0;
             padding: 0;
+            &.unlinkContainer{
+                flex-direction: row;
+                justify-content: space-between;
+                form{
+                    button{
+                        background:transparent;
+                        border:none;
+                    }
+                    img{
+                        width: 50px;
+                        filter: invert(1);
+                        opacity: 0.5;
+                        transition: opacity 0.5s;
+                        &:hover{
+                            opacity: 1;
+                            transition: opacity 0.5s;
+                        }
+                    }
+                }
+            }
             a{
                 text-decoration:none;
             }
@@ -289,31 +310,55 @@
                 </div>
             </li> 
         </ul>
-
     </div>
     <div id="container" style="margin-top:15px;">           
     <h2>Alts</h2>
         <ul class="list-flex">
-        @foreach ($character->alt as $alt) 
-        <li class="list-flex">
-            <a href="{{url('/alt/'.$alt->id)}}">
-                <div class="charList">
-                    <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$alt->name}}">
-                    <div class="mainCharInfo">
-                        <span class="">
-                        {{$alt->name}} 
-                        </span>
-                        <span class="">
-                            {{$alt->tribe}}
-                        </span>
+            @foreach ($character->alt as $alt) 
+            <li class="list-flex unlinkContainer">
+                <a href="{{url('/alt/'.$alt->id)}}">
+                    <div class="charList">
+                        <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$alt->name}}">
+                        <div class="mainCharInfo">
+                            <span class="">
+                            {{$alt->name}} 
+                            </span>
+                            <span class="">
+                                {{$alt->tribe}}
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </li>    
-        <hr>     
-        @endforeach()    
-    </ul>   
+                </a>
+                
+                
+                <!-- START unlink -->
+                @auth()
+                    <form method="post" action="{{ url('/unlink/alt/'.$alt->id) }} ">
+                        @csrf            
+                        <div class="form-group">                    
+                            <button type="submit" class="btn btn-danger unlink-character">
+                                <img src="{{url('/images/unlink.svg')}}" alt="unlink-{{$alt->name}}">
+                            </button>
+                        </div>
+                    </form>                    
+                @endauth
+            
+                <!-- END unlink -->
+            </li>    
+            <hr>     
+            @endforeach()    
+        </ul>   
     </div>
+    @auth()
+        <script>
+            $('.unlink-character').click(function(e){
+                e.preventDefault();
+                if (confirm('Are you sure you want to unlink this Alt?')) {
+                $(e.target).closest('form').submit();
+            }
+            });
+        </script>    
+    @endauth
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
 </body>
