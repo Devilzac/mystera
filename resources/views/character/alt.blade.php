@@ -12,7 +12,7 @@
         <ul class="list-flex">            
             <li class="list-flex">
                     <div class="charList">
-                        <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$character->name}}">
+                        <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                         <div class="mainCharInfo">
                             <span class="">
                             {{$character->name}}
@@ -46,7 +46,7 @@
         <li class="list-flex">
             <a href="{{url('/main/'.$main->id)}}">
                 <div class="charList">
-                    <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$main->name}}">
+                    <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$main->name}}">
                     <div class="mainCharInfo">
                         <span class="">
                         {{$main->name}}

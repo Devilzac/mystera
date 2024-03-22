@@ -12,7 +12,7 @@
             <li class="list-flex">
                 <a href="{{url('/alt/'.$character->id)}}">
                     <div class="charList">
-                        <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$character->name}}">
+                        <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                         <div class="mainCharInfo">
                             <span class="">
                             {{$character->name}}
@@ -21,6 +21,7 @@
                                 {{$character->tribe}}
                             </span>
                         </div>
+                            <div class="{{'slime-'.rand(1,9)}}"></div>
                         <div class="altAmount">
                             Main: {{ count($character->main) }} 
                         </div>
