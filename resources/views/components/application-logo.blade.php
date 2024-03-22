@@ -1,1 +1,0 @@
-<img src="{{url('images/logo.webp')}}" alt="logo">

@@ -17,13 +17,6 @@ class Alt extends Model
         'description'
     ];
 
-    public function unlink($id)
-    {
-        $alt = Alt::find($id);            
-        $alt->main()->detach($id);
-            
-    }
-
     public function getAllAltCharacters(){
         return Alt::all()->sortBy('name');
     }

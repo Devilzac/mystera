@@ -15,31 +15,10 @@ class MainCharacters extends Model
         'description'
     ];
 
-    public function automaticCreation(){
-        $string = "RUB has returned. (same IP as reaper)";
-
-        // Remove non-alphanumeric characters
-        $cleanString = preg_replace('/[^a-zA-Z0-9]/', ' ', $string);
-        $words = array_filter(explode(' ', $cleanString));
-        $firstWord = reset($words);
-        $lastWord = end($words);
-
-        return [$firstWord, $lastWord];
-    }
-
 
     public function getAllMainCharacters()
     {
         return MainCharacters::all()->sortBy('name');
-    }
-
-    public function unlink($id)
-    {
-        $alt = Alt::find($id);
-            if (!$alt->main()->where('alt_id', $id)->exists()) {
-                $alt->main()->detach($id);
-            }
-            
     }
 
     public function mainRelation($idMain, $alts)
@@ -47,9 +26,10 @@ class MainCharacters extends Model
         $main = MainCharacters::find($idMain);
         foreach ($main as $char) {
             foreach ($alts as $alt) {
-                if (!$char->alt()->where('alt_id', $alt)->exists()) {
-                    $char->alt()->attach($alt);
+                if(!$char->alt()->where('alt_id', $alt)->exists()){
+                    $char->alt()->attach($alt);                 
                 }
+        
             }
         }
     }
