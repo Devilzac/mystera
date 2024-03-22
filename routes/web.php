@@ -20,7 +20,7 @@ use App\Models\MainCharacters;
 */
 
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {    
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -41,13 +41,11 @@ Route::get('/alt/{id}', [AltController::class, 'show']);
 Route::get('/search', [MainCharactersController::class, 'search'])->name('character.search');
 
 
-Route::get('/add/alt', [AltController::class, 'create']);
-Route::get('/add/main', [MainCharactersController::class, 'create']);
-Route::post('/adding/main', [MainCharactersController::class, 'store']);
-Route::post('/adding/alt', [AltController::class, 'store']);
-Route::get('/relation', [RelationController::class, 'index']);
-Route::post('/relationship', [RelationController::class, 'relationing']);
+Route::get('/add/alt', [AltController::class, 'create'])->middleware(['auth', 'verified']);
+Route::get('/add/main', [MainCharactersController::class, 'create'])->middleware(['auth', 'verified']);
+Route::post('/adding/main', [MainCharactersController::class, 'store'])->middleware(['auth', 'verified']);
+Route::post('/adding/alt', [AltController::class, 'store'])->middleware(['auth', 'verified']);
+Route::get('/relation', [RelationController::class, 'index'])->middleware(['auth', 'verified']);
+Route::post('/relationship', [RelationController::class, 'relationing'])->middleware(['auth', 'verified']);
 
-
-
-Route::post('/unlink/alt/{id}', [AltController::class, 'unlink']);
+Route::post('/unlink/alt/{id}', [AltController::class, 'unlink'])->middleware(['auth', 'verified']);
