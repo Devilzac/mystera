@@ -12,6 +12,7 @@
 <body>  
     <x-nav></x-nav>      
     <div id="container">     
+        @if (isset($character))   
         <h1>Alt</h1>
         <!-- START LIST -->
         <ul class="list-flex">            
@@ -40,33 +41,36 @@
                     </div>
                 </div>
             </li> 
-
         </ul>
-
-    </div>
-    <div id="container" style="margin-top:15px;">           
-    <h2>Main</h2>
-        <ul class="list-flex">
-        @foreach ($character->main as $key => $main) 
-        <li class="list-flex">
-            <a href="{{url('/main/'.$main->id)}}">
-                <div class="charList">
-                    <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$main->name}}">
-                    <div class="mainCharInfo">
-                        <span class="">
-                        {{$main->name}}
-                        </span>
-                        <span class="">
-                            {{$main->tribe}}
-                        </span>
-                    </div>
-                </div>
-            </a>
-        </li>    
-            <hr>     
-        @endforeach()    
-    </ul>   
-    </div>
+        @else        
+            <h3>There is no character with that name. </h3>              
+        @endif
+    </div>    
+    @if (isset($character))   
+        <div id="container" style="margin-top:15px;">           
+        <h2>Main</h2>
+            <ul class="list-flex">
+                @foreach ($character->main as $key => $main) 
+                    <li class="list-flex">
+                        <a href="{{url('/main/'.$main->id)}}">
+                            <div class="charList">
+                                <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$main->name}}">
+                                <div class="mainCharInfo">
+                                    <span class="">
+                                    {{$main->name}}
+                                    </span>
+                                    <span class="">
+                                        {{$main->tribe}}
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>    
+                    <hr>     
+                @endforeach()    
+            </ul>   
+        </div>
+    @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
 </body>
