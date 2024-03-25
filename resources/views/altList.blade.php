@@ -15,7 +15,7 @@
         <!-- START LIST -->
         <ul class="list-flex">
             @foreach ($list as $key => $character)    
-            <li class="list-flex">
+            <li>
                 <a href="{{url('/alt/'.$character->id)}}">
                     <div class="charList">
                         <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">

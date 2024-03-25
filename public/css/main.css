@@ -37,6 +37,11 @@ body{
         h1,h2,h3,h4{
             color:#fff;
         }
+        ul{
+            hr{
+                color:#fff;
+            }
+        }
 }
 .lupa{
     stroke:#fff !important;
@@ -147,11 +152,22 @@ header{
     flex-direction: column;
     margin: 0;
     padding: 0;
+    list-style: none;
     a{
         text-decoration:none;
     }
     hr{
         color:#fff;
+    }
+}
+.list-grid{    
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    a{
+        text-decoration:none;
     }
 }
 .charList{

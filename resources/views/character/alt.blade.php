@@ -16,16 +16,19 @@
         <h1>Alt</h1>
         <!-- START LIST -->
         <ul class="list-flex">            
-            <li class="list-flex">
+            <li>
                     <div class="charList">
                         <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                         <div class="mainCharInfo">
                             <span class="">
-                            {{$character->name}}
-                            </span>
+                            {{$character->name}}                                     
+                            @if(count($character->main) >= 2)
+                                >>>Shared Account<<<
+                            @endif
+                            </span>                 
                             <span class="">
                                 {{$character->tribe}}
-                            </span>
+                            </span>  
                         </div>
                         <div class="altAmount">
                             Main: {{ count($character->main) }} 
@@ -34,7 +37,7 @@
             </li>   
             <hr>              
             <h3>Description</h3>
-            <li class="list-flex">
+            <li>
                 <div class="charList">
                     <div class="mainCharInfo description">
                         {{$character->description}}
@@ -49,9 +52,9 @@
     @if (isset($character))   
         <div id="container" style="margin-top:15px;">           
         <h2>Main</h2>
-            <ul class="list-flex">
+            <ul class="list-grid">
                 @foreach ($character->main as $key => $main) 
-                    <li class="list-flex">
+                    <li>
                         <a href="{{url('/main/'.$main->id)}}">
                             <div class="charList">
                                 <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$main->name}}">
@@ -61,12 +64,11 @@
                                     </span>
                                     <span class="">
                                         {{$main->tribe}}
-                                    </span>
+                                    </span>                                 
                                 </div>
                             </div>
                         </a>
-                    </li>    
-                    <hr>     
+                    </li>     
                 @endforeach()    
             </ul>   
         </div>

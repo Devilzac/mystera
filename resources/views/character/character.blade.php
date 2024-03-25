@@ -16,7 +16,7 @@
             <h1>Main</h1>
             <!-- START LIST -->
             <ul class="list-flex">
-                <li class="list-flex">          
+                <li>          
                         <div class="charList">                        
                             <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                             <div class="mainCharInfo">
@@ -35,7 +35,7 @@
                 <hr>
                 
                 <h3>Description</h3>
-                <li class="list-flex">
+                <li>
                     <div class="charList">
                         <div class="mainCharInfo description">
                             {{$character->description}}
@@ -51,9 +51,9 @@
     @if (isset($character))   
         <div id="container" style="margin-top:15px;">       
             <h2>Alts</h2>
-                <ul class="list-flex">
+                <ul class="list-grid">
                     @foreach ($character->alt as $alt) 
-                        <li class="list-flex">
+                        <li>
                             <a href="{{url('/alt/'.$alt->id)}}">
                                 <div class="charList">
                                     <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
@@ -67,8 +67,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </li>    
-                        <hr>     
+                        </li>      
                     @endforeach()    
                 </ul>       
         </div>
