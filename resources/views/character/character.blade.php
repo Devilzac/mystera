@@ -53,7 +53,7 @@
             <h2>Alts</h2>
                 <ul class="list-grid">
                     @foreach ($character->alt as $alt) 
-                        <li>
+                        <li class="chip">
                             <a href="{{url('/alt/'.$alt->id)}}">
                                 <div class="charList">
                                     <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">

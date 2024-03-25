@@ -54,7 +54,7 @@
         <h2>Main</h2>
             <ul class="list-grid">
                 @foreach ($character->main as $key => $main) 
-                    <li>
+                    <li class="chip">
                         <a href="{{url('/main/'.$main->id)}}">
                             <div class="charList">
                                 <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$main->name}}">
