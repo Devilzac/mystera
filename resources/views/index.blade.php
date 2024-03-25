@@ -296,7 +296,7 @@
             <li class="list-flex">
                 <a href="{{url('/main/'.$character->id)}}">
                     <div class="charList">
-                        <img class="" src="{{url('images/'.rand(1, 6).'.webp')}}" alt="{{$character->name}}">
+                        <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                         <div class="mainCharInfo">
                             <span class="">
                             {{$character->name}}
