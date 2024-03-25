@@ -18,7 +18,7 @@ class MainCharacters extends Model
 
     public function getAllMainCharacters()
     {
-        return MainCharacters::all()->sortBy('name');
+        return MainCharacters::all()->sortBy('name', SORT_NATURAL);
     }
 
     public function mainRelation($idMain, $alts)

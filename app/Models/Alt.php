@@ -18,7 +18,7 @@ class Alt extends Model
     ];
 
     public function getAllAltCharacters(){
-        return Alt::all()->sortBy('name');
+        return Alt::all()->sortBy('name', SORT_NATURAL);
     }
 
     public function main():BelongsToMany

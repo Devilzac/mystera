@@ -16,7 +16,7 @@ class Relation extends Model
     
 
     public function getAllRelation(){
-        return Relation::all()->sortBy('name');
+        return Relation::all()->sortBy('name', SORT_NATURAL);
     }
     
 
