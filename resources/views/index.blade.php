@@ -8,14 +8,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <style>
+  
+    <style>        
+        @font-face {
+            font-family: 'modeseven';
+            src: url({{ asset('/font/modeseven.ttf') }});
+        }
+
         * {
-            font-family: "Pixelify Sans", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: <weight>;
-            font-style: normal;
-        }     
+                font-family: 'modeseven', Arial, Helvetica, sans-serif;
+                font-optical-sizing: auto;
+        }  
         .mainChar{
             text-align: center;
             padding:15px;
@@ -84,13 +87,13 @@
             outline: 0;
             box-shadow: 0 0 0 0.25rem rgba(0,150,0,.25);
             
-            animation-name: example;
+            animation-name: formSwutch;
             animation-duration: 1s;
             animation-iteration-count: infinite;
             animation-direction: alternate;
             animation-timing-function: ease-in-out;
         }
-        @keyframes example {
+        @keyframes formSwutch {
             from {            
                 box-shadow: 0 0 0 0.2rem rgba(0,150,0,.2);
             }
