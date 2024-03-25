@@ -10,40 +10,8 @@
     <link rel="stylesheet" href="{{ URL::asset('css/fonts.css'); }}">  
     <link rel="stylesheet" href="{{ URL::asset('css/addCharacters.css'); }}">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a>
-          <div class="" id="navbarSupportedContent">            
-                <!-- START SEARCH -->
-                <form action={{ route('character.search') }} class="d-flex" role="search" method="GET">
-                    <div class="cntSearch">
-                        <div class="form-switch">
-                            <input type="search" id="search" name="search" class="form-control me-2" placeholder="Character name..." aria-label="Search">                    
-                            <div class="btnAlt">
-                                <input class="form-check-input" type="checkbox" name="searchType" role="switch" id="searchType">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>            
-                <!-- END SEARCH -->
-          </div>
-        </div>
-      </nav>
-      
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">Mains List</a>
-                </li>
-                <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/alts') }}">Alts List</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<body>  
+    <x-nav></x-nav>
     <form  id="container" action="{{ url('/adding/alt')}}" method="post" class="block">
         @csrf
         <label for="name">Name: </label><input type="text" placeholder="Alt Character Name" name="name" required id="name">
@@ -51,10 +19,6 @@
         <label for="description">Description: </label><input type="text" placeholder="Small description" name="description" required id="description">
         <button type="submit">Submit</button>
     </form>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  
 </body>
-
-
 </html>
