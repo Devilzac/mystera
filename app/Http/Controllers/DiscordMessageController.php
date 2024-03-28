@@ -17,7 +17,7 @@ class DiscordMessageController extends Controller
     }
     public function fetchMessages()
     {
-    
+    /*
         try {
             // Make the HTTP request using Laravel HTTP client
             $response = Http::withOptions(['verify' => false])
@@ -54,6 +54,6 @@ class DiscordMessageController extends Controller
         } catch (RequestException $e) {
             return response()->json(['error' => 'Request failed: ' . $e->getMessage()], 500);
         }
-    
+    */
     }
 }

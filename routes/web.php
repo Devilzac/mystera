@@ -34,5 +34,5 @@ Route::post('/adding/alt', [AltController::class, 'store']);
 Route::get('/relation', [RelationController::class, 'index']);
 Route::post('/relationship', [RelationController::class, 'relationing']);
 
-Route::get('/fetch-messages', [DiscordMessageController::class, 'fetchMessages']);
+//Route::get('/fetch-messages', [DiscordMessageController::class, 'fetchMessages']);
 Route::get('/missing', [DiscordMessageController::class, 'index']);

@@ -12,7 +12,6 @@ class PendingCharacter extends Model
     protected $fillable = [
         'character1',
         'character2',
-        'message',
     ];
 
     public function getList()

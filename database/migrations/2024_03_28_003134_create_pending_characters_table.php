@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('character1');
             $table->string('character2');
-            $table->string('message');
             // Add other fields as needed
             $table->timestamps();
         });

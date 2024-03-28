@@ -14,7 +14,7 @@ class FetchDiscordMessages extends Command
 
     public function handle()
     {
-   
+   /*
 
         // Make the HTTP request using Laravel HTTP client
         $response = Http::withOptions(['verify' => false])
@@ -59,6 +59,6 @@ class FetchDiscordMessages extends Command
             $this->info('Messages fetched successfully!');
         } else {
             $this->error('Error fetching messages: ' . $response->status());
-        }
+        }*/
     }
 }
