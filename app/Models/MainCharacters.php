@@ -33,9 +33,38 @@ class MainCharacters extends Model
             }
         }
     }
+    public function autoRelate()
+    {
+        $pending = PendingCharacter::all()->sortBy('name', SORT_NATURAL, true);
+        
+        foreach ($pending as $p_char) {
+            $main = MainCharacters::where('name', $p_char->character1)->get();
+            $res = new Alt();
+            $resul = $res->getAllAltCharactersByName($p_char->character2);
+            if($resul->isEmpty()==false){
+                foreach ($main as $char) {
+                        if(!$char->alt()->where('name', $p_char->character2)->exists()){
+                            $char->alt()->attach($resul); 
+                            
+                                if ($p_char) {
+                                    // If the item exists, delete it
+                                    $p_char->delete();
+                                    echo "Item deleted successfully.";
+                                }       
+                        }
+                }
+            }
+        }
+        
+    }
+
 
     public function alt(): BelongsToMany
     {
         return $this->belongsToMany(Alt::class);
+    }
+    public function relatedMainCharacters()
+    {
+        return $this->belongsToMany(MainCharacters::class, 'alt_main_characters', 'main_characters_id', 'alt_id');
     }
 }

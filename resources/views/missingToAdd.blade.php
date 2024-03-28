@@ -27,14 +27,20 @@
                                 {{$character->character2}}
                             </span>
                         </div>
-                    <span class="mainCharInfo">{{$character->message}}</span>
+                        <span class="mainCharInfo">{{$character->message}}</span>
                     </div>
             </li>    
             <hr>      
             @endforeach()    
         </ul>   
+        
+        <form  id="container"  action="{{ url('/autor')}}" method="post" class="block">    
+            @csrf      
+            <button type="submit">Auto Relation</button>
+        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   
 </body>
 </html>
+

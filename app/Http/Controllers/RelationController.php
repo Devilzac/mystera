@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alt;
 use App\Models\MainCharacters;
+use App\Models\PendingCharacter;
 use App\Models\Relation;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,18 @@ class RelationController extends Controller
         $mainRelationn->mainRelation($main, $alt);
         return redirect('/')->with('message', 'Item saved correctly!!!');;
     }
+
+    
+    public function autoRelationing(Request $request)
+    {               
+        $mainRelationn = new MainCharacters();
+        $pending = new PendingCharacter();
+        $main = $request->input('main');
+        $alt = $request->input('alt');
+        $mainRelationn->autoRelate();
+        return redirect('/')->with('message', 'Item saved correctly!!!');;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
